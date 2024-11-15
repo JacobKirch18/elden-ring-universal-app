@@ -38,7 +38,7 @@ namespace eldenRingUniversalApp
                     Image = margitImagePath
                 },
                 new Boss { Id = "1", Description = "Test1", Drops = drops,
-                    HealthPoints = "10", Location = "Limgrave", Name = "Margit2",
+                    HealthPoints = "10", Location = "Limgrave", Name = "Margit The Fell: Omen",
                     Image = margitImagePath
                 },
                 new Boss { Id = "3", Description = "Test3", Drops = drops,
@@ -61,6 +61,18 @@ namespace eldenRingUniversalApp
         private void defeatButton_Click(object sender, RoutedEventArgs e)
         {
             // When user defeats a boss
+            Button clickedButton = sender as Button;
+
+            if (clickedButton != null)
+            {
+                Boss defeatedBoss = clickedButton.DataContext as Boss;
+                if (defeatedBoss != null)
+                {
+                    // Send defeatedBoss to Compendium
+                    // Alert the user maybe?
+                    // Remove boss from Main or show that he was defeated in Main
+                }
+            }
         }
     }
 }

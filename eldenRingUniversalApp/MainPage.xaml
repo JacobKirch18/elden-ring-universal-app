@@ -15,17 +15,36 @@
             <AppBarButton Icon="Help" Label="About" Click="aboutGameButton_Click" Width="85" />
         </CommandBar>
         <StackPanel>
-            <ListView x:Name="bossListView" Height="500" Width="800"
-            ItemsSource="{x:Bind bossList}">
+            <ListView x:Name="bossListView" Height="500"
+            ItemsSource="{x:Bind bossList}" Margin="10,0,10,0" HorizontalAlignment="Stretch">
+                <!-- ChatGPt helped me align defeatButton to the right, used many trial and error prompts until it gave me this code -->
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Boss">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="{x:Bind Image}" Width="200" Height="200" Stretch="Uniform"/>
-            <!-- Probably have to put this into a Grid to space out elements (defeated button all the way right) -->
-                            <TextBlock Text="{x:Bind Name}" VerticalAlignment="Center" Margin="40,0,40,0"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <!-- For the Image -->
+                                <ColumnDefinition Width="*"/>
+                                <!-- For the TextBlock -->
+                                <ColumnDefinition Width="Auto"/>
+                                <!-- For the Button -->
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Image in the first column -->
+                            <Image Source="{x:Bind Image}" Width="200" Height="200" Stretch="Uniform" Grid.Column="0"/>
+
+                            <!-- TextBlock in the second column -->
+                            <TextBlock Text="{x:Bind Name}" VerticalAlignment="Center" Margin="40,0,40,0" Grid.Column="1"/>
+
+                            <!-- Button in the third column -->
                             <Button x:Name="defeatButton" Content="Defeated" Click="defeatButton_Click" 
-                                    HorizontalAlignment="Right" Margin="0,0,0,0"/>
-                        </StackPanel>
+                            HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,100,0" Grid.Column="2"/>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
