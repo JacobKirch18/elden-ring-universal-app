@@ -22,10 +22,40 @@
             <RadioButton Content="NG+ 6"/>
             <RadioButton Content="NG+ 7"/>
         </StackPanel>
-        <Line X1="0" Y1="0" X2="{Binding ElementName=radioButtonsStackPanel, Path=ActualWidth}"  Y2="1" 
-              Stroke="White" StrokeThickness="2" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="radioButtonsStackPanel"/>
-        <ListView x:Name="bossListView">
-            <!-- for bosses -->
+        <Line x:Name="divLine" X1="0" Y1="0" X2="{Binding ElementName=radioButtonsStackPanel, Path=ActualWidth}" Y2="1" 
+              Stroke="White" StrokeThickness="2" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="radioButtonsStackPanel" />
+        <ListView x:Name="bossListView" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="divLine" ItemsSource="{x:Bind bossesDefeatedList}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Boss">
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind Name}" FontWeight="Bold" />
+                        <Image Source="{x:Bind Image}" />
+                        <TextBlock Text="{x:Bind Description}" />
+                        <TextBlock Text="{x:Bind Location}" />
+                        <ListView x:Name="dropsListView" ItemsSource="{x:Bind Drops}">
+                            <!-- Asked ChatGPT "How to make the list boxes not clickable and not highlight on mouse hover -->
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" FontWeight="Bold" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <TextBlock Text="{x:Bind HealthPoints}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </RelativePanel>
 </Page>

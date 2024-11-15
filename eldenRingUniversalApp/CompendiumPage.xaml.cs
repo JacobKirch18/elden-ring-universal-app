@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static System.Net.Mime.MediaTypeNames;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,11 +25,26 @@ namespace eldenRingUniversalApp
     public sealed partial class CompendiumPage : Page
     {
 
-        ObservableCollection<Boss> bossesDefeated = new ObservableCollection<Boss>();
+        ObservableCollection<Boss> bossesDefeatedList = new ObservableCollection<Boss>();
 
         public CompendiumPage()
         {
             this.InitializeComponent();
+            Boss AncestorSpirit = new Boss()
+            {
+                Id = "17f69590896l0i1ul0hnmor8iyf9xd",
+                Name = "Ancestor Spirit",
+                Image = "https://eldenring.fanapis.com/images/bosses/17f69590896l0i1ul0hnmor8iyf9xd.png",
+                Description = "A glowing spirit that takes the form of a large deer, making it a menacing threat when charging at targets.",
+                Location = "Siofra River",
+                Drops = new string[]
+                {
+                    "13.000 Runes",
+                    "Ancestor Follower Ashes"
+                },
+                HealthPoints = "???"
+            };
+            bossesDefeatedList.Add(AncestorSpirit);
         }
     }
 }
