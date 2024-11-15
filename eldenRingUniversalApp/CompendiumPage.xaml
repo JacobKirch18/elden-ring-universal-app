@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="eldenRingUniversalApp.MainPage"
+    x:Class="eldenRingUniversalApp.CompendiumPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:eldenRingUniversalApp"
@@ -9,13 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     RequestedTheme="Dark">
 
-    <StackPanel>
-        <CommandBar HorizontalAlignment="Right">
-            <AppBarButton Icon="Library"  Label="Compendium" Click="compendiumButton_Click" Width="85" />
-            <AppBarButton Icon="Help" Label="About" Click="aboutGameButton_Click" Width="85" />
-        </CommandBar>
-        <Grid>
-            
-        </Grid>
-    </StackPanel>
+    <Grid>
+
+    </Grid>
 </Page>
