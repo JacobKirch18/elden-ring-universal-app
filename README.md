@@ -18,10 +18,12 @@ https://docs.eldenring.fanapis.com/docs/
 
 ## Contributions
 ### Ben Jones
--
+- Main Page
 
 ### Jacob Kirchner
--
+- Compendium Page
+- About Page
+- Boss Class
 
 ## Percentage of Work
 
