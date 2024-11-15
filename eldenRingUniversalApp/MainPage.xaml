@@ -14,8 +14,21 @@
             <AppBarButton Icon="Library"  Label="Compendium" Click="compendiumButton_Click" Width="85" />
             <AppBarButton Icon="Help" Label="About" Click="aboutGameButton_Click" Width="85" />
         </CommandBar>
-        <Grid>
-            
-        </Grid>
+        <StackPanel>
+            <ListView x:Name="bossListView" Height="500" Width="800"
+            ItemsSource="{x:Bind bossList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Boss">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{x:Bind Image}" Width="200" Height="200" Stretch="Uniform"/>
+            <!-- Probably have to put this into a Grid to space out elements (defeated button all the way right) -->
+                            <TextBlock Text="{x:Bind Name}" VerticalAlignment="Center" Margin="40,0,40,0"/>
+                            <Button x:Name="defeatButton" Content="Defeated" Click="defeatButton_Click" 
+                                    HorizontalAlignment="Right" Margin="0,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </StackPanel>
 </Page>
