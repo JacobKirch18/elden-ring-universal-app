@@ -10,6 +10,14 @@
     RequestedTheme="Dark">
 
     <Grid>
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Elden Ring Boss Book" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" />
+            <Image Source="Images/erSmallLogo.jpg" Width="200" HorizontalAlignment="Center"/>
+            <TextBlock Text="By: Ben Jones and Jacob Kirchner" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
+            <TextBlock Text="This is a companion app for the game Elden Ring" FontSize="18" HorizontalAlignment="Center"/>
+            <TextBlock Text="It allows you to keep track of all the bosses you've killed," FontSize="18" HorizontalAlignment="Center"/>
+            <TextBlock Text="and all the information you learned about that boss." FontSize="18" HorizontalAlignment="Center"/>
+            <Button Content="OK" HorizontalAlignment="Center" Click="Button_Click" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Page>
