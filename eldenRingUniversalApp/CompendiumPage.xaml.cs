@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,6 +23,9 @@ namespace eldenRingUniversalApp
     /// </summary>
     public sealed partial class CompendiumPage : Page
     {
+
+        ObservableCollection<Boss> bossesDefeated = new ObservableCollection<Boss>();
+
         public CompendiumPage()
         {
             this.InitializeComponent();
