@@ -122,6 +122,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Boss.cs" />
     <Compile Include="CompendiumPage.xaml.cs">
       <DependentUpon>CompendiumPage.xaml</DependentUpon>
     </Compile>

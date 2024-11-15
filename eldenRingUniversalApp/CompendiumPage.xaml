@@ -9,7 +9,23 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     RequestedTheme="Dark">
 
-    <Grid>
-
-    </Grid>
+    <RelativePanel>
+        <TextBlock x:Name="compendiumText" Text="Compendium" FontSize="50" Padding="50" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+        <TextBlock x:Name="levelText" Text="New Game+ Level" FontSize="20" Padding ="20" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="compendiumText"/>
+        <StackPanel x:Name="radioButtonsStackPanel" Orientation="Horizontal" Padding="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="levelText">
+            <RadioButton Content="NG+ 0"/>
+            <RadioButton Content="NG+ 1"/>
+            <RadioButton Content="NG+ 2"/>
+            <RadioButton Content="NG+ 3"/>
+            <RadioButton Content="NG+ 4"/>
+            <RadioButton Content="NG+ 5"/>
+            <RadioButton Content="NG+ 6"/>
+            <RadioButton Content="NG+ 7"/>
+        </StackPanel>
+        <Line X1="0" Y1="0" X2="{Binding ElementName=radioButtonsStackPanel, Path=ActualWidth}"  Y2="1" 
+              Stroke="White" StrokeThickness="2" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="radioButtonsStackPanel"/>
+        <ListView>
+            <!-- for bosses -->
+        </ListView>
+    </RelativePanel>
 </Page>
