@@ -137,6 +137,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\erSmallLogo.jpg" />
+    <Content Include="Images\erSplashScreen.jpg" />
     <Content Include="Images\margit.jfif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
