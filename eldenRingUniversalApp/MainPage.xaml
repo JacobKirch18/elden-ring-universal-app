@@ -13,7 +13,12 @@
         <CommandBar HorizontalAlignment="Right">
             <AppBarButton Icon="Library"  Label="Compendium" Click="compendiumButton_Click" Width="85" />
             <AppBarButton Icon="Help" Label="About" Click="aboutGameButton_Click" Width="85" />
+            <AppBarButton Icon="Find" Label="Search" Click="searchButton_Click" Width="85" />
         </CommandBar>
+        <TextBox x:Name="searchTextBox" Text="Type to search..." TextWrapping="Wrap" Height="35" Width="176" 
+                   HorizontalAlignment="Right" Margin="0,20,50,20" Visibility="Collapsed"
+                   GotFocus="searchTextBox_GotFocus" LostFocus="searchTextBox_LostFocus" 
+                   TextChanged="searchTextBox_TextCHanged" />
         <TextBlock Text="Boss List" FontSize="50" Padding="50" HorizontalAlignment="Center"/>
         <StackPanel>
             <ListView x:Name="bossListView" Height="500"
