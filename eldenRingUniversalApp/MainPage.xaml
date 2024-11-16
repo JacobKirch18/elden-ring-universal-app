@@ -14,6 +14,7 @@
             <AppBarButton Icon="Library"  Label="Compendium" Click="compendiumButton_Click" Width="85" />
             <AppBarButton Icon="Help" Label="About" Click="aboutGameButton_Click" Width="85" />
         </CommandBar>
+        <TextBlock Text="Boss List" FontSize="50" Padding="50" HorizontalAlignment="Center"/>
         <StackPanel>
             <ListView x:Name="bossListView" Height="500"
             ItemsSource="{x:Bind bossList}" Margin="10,0,10,0" HorizontalAlignment="Stretch">
