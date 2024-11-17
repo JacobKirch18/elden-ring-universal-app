@@ -22,18 +22,18 @@
         <TextBlock x:Name="compendiumText" Text="Compendium" FontSize="50" Padding="50" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <TextBlock x:Name="levelText" Text="New Game+ Level" FontSize="20" Padding ="20" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="compendiumText"/>
         <StackPanel x:Name="radioButtonsStackPanel" Orientation="Horizontal" Padding="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="levelText">
-            <RadioButton Content="NG+ 0"/>
-            <RadioButton Content="NG+ 1"/>
-            <RadioButton Content="NG+ 2"/>
-            <RadioButton Content="NG+ 3"/>
-            <RadioButton Content="NG+ 4"/>
-            <RadioButton Content="NG+ 5"/>
-            <RadioButton Content="NG+ 6"/>
-            <RadioButton Content="NG+ 7"/>
+            <RadioButton x:Name="rb0" Content="NG+ 0" IsChecked="True"/>
+            <RadioButton x:Name="rb1" Content="NG+ 1"/>
+            <RadioButton x:Name="rb2" Content="NG+ 2"/>
+            <RadioButton x:Name="rb3" Content="NG+ 3"/>
+            <RadioButton x:Name="rb4" Content="NG+ 4"/>
+            <RadioButton x:Name="rb5" Content="NG+ 5"/>
+            <RadioButton x:Name="rb6" Content="NG+ 6"/>
+            <RadioButton x:Name="rb7" Content="NG+ 7"/>
         </StackPanel>
         <Line x:Name="divLine" X1="0" Y1="0" X2="{Binding ElementName=radioButtonsStackPanel, Path=ActualWidth}" Y2="1" 
               Stroke="White" StrokeThickness="2" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="radioButtonsStackPanel" />
-        <ListView x:Name="bossListView" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="divLine" ItemsSource="{x:Bind bossesDefeatedList}">
+        <ListView x:Name="bossListView" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="divLine" ItemsSource="{x:Bind defeatedBosses}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Boss">
                     <StackPanel>

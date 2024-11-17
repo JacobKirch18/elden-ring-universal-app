@@ -126,7 +126,7 @@ namespace eldenRingUniversalApp
 
         private void compendiumButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(CompendiumPage));
+            this.Frame.Navigate(typeof(CompendiumPage), defeatedBosses);
         }
 
         private void aboutGameButton_Click(object sender, RoutedEventArgs e)

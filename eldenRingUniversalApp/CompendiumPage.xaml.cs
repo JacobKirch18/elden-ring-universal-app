@@ -25,26 +25,38 @@ namespace eldenRingUniversalApp
     public sealed partial class CompendiumPage : Page
     {
 
-        ObservableCollection<Boss> bossesDefeatedList = new ObservableCollection<Boss>();
+        ObservableCollection<Boss> defeatedBosses;
 
         public CompendiumPage()
         {
             this.InitializeComponent();
-            Boss AncestorSpirit = new Boss()
+            //Boss AncestorSpirit = new Boss()
+            //{
+            //    Id = "17f69590896l0i1ul0hnmor8iyf9xd",
+            //    Name = "Ancestor Spirit",
+            //    Image = "https://eldenring.fanapis.com/images/bosses/17f69590896l0i1ul0hnmor8iyf9xd.png",
+            //    Description = "A glowing spirit that takes the form of a large deer, making it a menacing threat when charging at targets.",
+            //    Location = "Siofra River",
+            //    Drops = new string[]
+            //    {
+            //        "13.000 Runes",
+            //        "Ancestor Follower Ashes"
+            //    },
+            //    HealthPoints = "???"
+            //};
+            //defeatedBosses.Add(AncestorSpirit);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.Parameter is List<Boss> bossList)
             {
-                Id = "17f69590896l0i1ul0hnmor8iyf9xd",
-                Name = "Ancestor Spirit",
-                Image = "https://eldenring.fanapis.com/images/bosses/17f69590896l0i1ul0hnmor8iyf9xd.png",
-                Description = "A glowing spirit that takes the form of a large deer, making it a menacing threat when charging at targets.",
-                Location = "Siofra River",
-                Drops = new string[]
-                {
-                    "13.000 Runes",
-                    "Ancestor Follower Ashes"
-                },
-                HealthPoints = "???"
-            };
-            bossesDefeatedList.Add(AncestorSpirit);
+                // Access the bossList data and perform any necessary operations
+                // For example, you can bind it to a ListView or display it in the UI
+               defeatedBosses = new ObservableCollection<Boss>(bossList);
+            }
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
@@ -95,13 +107,13 @@ namespace eldenRingUniversalApp
 
             string searchText = searchTextBox.Text.ToLower();
 
-            var results = bossesDefeatedList.Where(boss => boss.Name.ToLower().Contains(searchText)).ToList();
+            var results = defeatedBosses.Where(boss => boss.Name.ToLower().Contains(searchText)).ToList();
 
             bossListView.ItemsSource = results;
 
             if (searchTextBox.Text == string.Empty || searchTextBox.Text == "Type to search...")
             {
-                bossListView.ItemsSource = bossesDefeatedList;
+                bossListView.ItemsSource = defeatedBosses;
             }
         }
     }
