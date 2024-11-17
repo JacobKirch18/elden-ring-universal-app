@@ -142,8 +142,9 @@ namespace eldenRingUniversalApp
             if (clickedButton != null)
             {
                 Boss defeatedBoss = clickedButton.DataContext as Boss;
-                if (defeatedBoss != null)
+                if (defeatedBoss != null && !defeatedBosses.Contains(defeatedBoss))
                 {
+
                     defeatedBosses.Add(defeatedBoss);
                     defeatedText.Text = defeatedBoss.Name + " added to Compendium";
 

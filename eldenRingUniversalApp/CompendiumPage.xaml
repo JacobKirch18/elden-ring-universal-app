@@ -21,7 +21,7 @@
            TextChanged="searchTextBox_TextChanged" />
         <TextBlock x:Name="compendiumText" Text="Compendium" FontSize="50" Padding="50" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <TextBlock x:Name="levelText" Text="New Game+ Level" FontSize="20" Padding ="20" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="compendiumText"/>
-        <StackPanel x:Name="radioButtonsStackPanel" Orientation="Horizontal" Padding="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="levelText">
+        <StackPanel x:Name="radioButtonsStackPanel" Orientation="Horizontal" Margin="35,0,0,0" Padding="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="levelText">
             <RadioButton x:Name="rb0" Content="NG+ 0" IsChecked="True"/>
             <RadioButton x:Name="rb1" Content="NG+ 1"/>
             <RadioButton x:Name="rb2" Content="NG+ 2"/>

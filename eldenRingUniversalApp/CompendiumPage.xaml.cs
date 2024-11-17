@@ -119,7 +119,16 @@ namespace eldenRingUniversalApp
 
         private void removeBossButton_Click(object sender, RoutedEventArgs e)
         {
+            Button clickedButton = sender as Button;
 
+            if (clickedButton != null)
+            {
+                Boss defeatedBoss = clickedButton.DataContext as Boss;
+                if (defeatedBoss != null)
+                {
+                    defeatedBosses.Remove(defeatedBoss);
+                }
+            }
         }
     }
 }
