@@ -116,5 +116,10 @@ namespace eldenRingUniversalApp
                 bossListView.ItemsSource = defeatedBosses;
             }
         }
+
+        private void removeBossButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

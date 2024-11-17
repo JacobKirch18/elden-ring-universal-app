@@ -57,7 +57,7 @@
                 <Popup x:Name="NotificationPopup" IsOpen="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Border Background="Black" CornerRadius="5" Padding="10">
                         <!-- Can change font to whatever you think looks the best -->
-                        <TextBlock Text="Boss Added to Compendium" FontSize="20" FontFamily="Britannic Bold" FontWeight="Bold" />
+                        <TextBlock x:Name="defeatedText" Text="Boss Added to Compendium" FontSize="20" FontFamily="Britannic Bold" FontWeight="Bold" />
                     </Border>
                 </Popup>
             </ListView>

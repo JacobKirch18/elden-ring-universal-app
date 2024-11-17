@@ -145,6 +145,7 @@ namespace eldenRingUniversalApp
                 if (defeatedBoss != null)
                 {
                     defeatedBosses.Add(defeatedBoss);
+                    defeatedText.Text = defeatedBoss.Name + " added to Compendium";
 
                     // I asked ChatGPT "how could I flash a little notification pop up in my page?" to learn about Popup
                     // I also asked ChatGPT "I'm trying to have it centered, how could I do that" and got the following code
