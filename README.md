@@ -19,6 +19,7 @@ https://docs.eldenring.fanapis.com/docs/
 ## Contributions
 ### Ben Jones
 - Main Page
+- API Calls
 
 ### Jacob Kirchner
 - Compendium Page
