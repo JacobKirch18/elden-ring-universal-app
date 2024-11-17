@@ -18,10 +18,10 @@
         <TextBox x:Name="searchTextBox" Text="Type to search..." TextWrapping="Wrap" Height="35" Width="176" 
                    HorizontalAlignment="Right" Margin="0,20,50,20" Visibility="Collapsed"
                    GotFocus="searchTextBox_GotFocus" LostFocus="searchTextBox_LostFocus" 
-                   TextChanged="searchTextBox_TextCHanged" />
+                   TextChanged="searchTextBox_TextChanged" />
         <TextBlock Text="Boss List" FontSize="50" Padding="50" HorizontalAlignment="Center"/>
         <StackPanel>
-            <ListView x:Name="bossListView" Height="500"
+            <ListView x:Name="bossListView" Height="750"
             ItemsSource="{x:Bind bossList}" Margin="10,0,10,0" HorizontalAlignment="Stretch">
                 <!-- ChatGPt helped me align defeatButton to the right, used many trial and error prompts until it gave me this code -->
                 <ListView.ItemContainerStyle>

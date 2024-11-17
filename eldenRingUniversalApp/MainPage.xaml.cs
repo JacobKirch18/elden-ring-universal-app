@@ -207,7 +207,7 @@ namespace eldenRingUniversalApp
             }
         }
 
-        private void searchTextBox_TextCHanged(object sender, TextChangedEventArgs e)
+        private void searchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
             // Prompted ChatGPT "i used a button to try to search through

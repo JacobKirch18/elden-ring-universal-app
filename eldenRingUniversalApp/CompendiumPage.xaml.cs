@@ -46,5 +46,63 @@ namespace eldenRingUniversalApp
             };
             bossesDefeatedList.Add(AncestorSpirit);
         }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void aboutGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AboutPage));
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (searchTextBox.Visibility == Visibility.Visible)
+            {
+                searchTextBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                searchTextBox.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void searchTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (searchTextBox.Text == "Type to search...")
+            {
+                searchTextBox.Text = string.Empty;
+            }
+        }
+
+        private void searchTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (searchTextBox.Text == string.Empty)
+            {
+                searchTextBox.Text = "Type to search...";
+            }
+        }
+
+        private void searchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            // Prompted ChatGPT "i used a button to try to search through
+            // a list view and display based on what the user types into a box,
+            // how could I do this" and got the the next three lines of code to help me
+
+            string searchText = searchTextBox.Text.ToLower();
+
+            var results = bossesDefeatedList.Where(boss => boss.Name.ToLower().Contains(searchText)).ToList();
+
+            bossListView.ItemsSource = results;
+
+            if (searchTextBox.Text == string.Empty || searchTextBox.Text == "Type to search...")
+            {
+                bossListView.ItemsSource = bossesDefeatedList;
+            }
+        }
     }
 }

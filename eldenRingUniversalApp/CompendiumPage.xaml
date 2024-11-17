@@ -10,6 +10,15 @@
     RequestedTheme="Dark">
 
     <RelativePanel>
+        <CommandBar x:Name="commandBar" RelativePanel.AlignRightWithPanel="True">
+            <AppBarButton Icon="Home" Label="Compendium" Click="homeButton_Click" Width="85" />
+            <AppBarButton Icon="Help" Label="About" Click="aboutGameButton_Click" Width="85" />
+            <AppBarButton Icon="Find" Label="Search" Click="searchButton_Click" Width="85" />
+        </CommandBar>
+        <TextBox x:Name="searchTextBox" Text="Type to search..." TextWrapping="Wrap" Height="35" Width="176" 
+           RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="commandBar" Margin="0,20,50,20" Visibility="Collapsed"
+           GotFocus="searchTextBox_GotFocus" LostFocus="searchTextBox_LostFocus" 
+           TextChanged="searchTextBox_TextChanged" />
         <TextBlock x:Name="compendiumText" Text="Compendium" FontSize="50" Padding="50" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <TextBlock x:Name="levelText" Text="New Game+ Level" FontSize="20" Padding ="20" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="compendiumText"/>
         <StackPanel x:Name="radioButtonsStackPanel" Orientation="Horizontal" Padding="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="levelText">
