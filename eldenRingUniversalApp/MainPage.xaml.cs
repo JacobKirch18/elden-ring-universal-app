@@ -15,6 +15,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Diagnostics;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace eldenRingUniversalApp
@@ -30,12 +34,15 @@ namespace eldenRingUniversalApp
         // All of these are tests and should be removed 
         private ObservableCollection<Boss> bossList;
         string[] drops = { "30,000 runes" };
-        string margitImagePath = @"Images\margit.jfif";
+        string margitImagePath;
         public MainPage()
         {
             this.InitializeComponent();
 
-            bossList = new ObservableCollection<Boss>()
+            bossList = new ObservableCollection<Boss>();
+            margitImagePath = @"Images\margit.jfif";
+
+            /*bossList = new ObservableCollection<Boss>()
             {
                 new Boss { Id = "0", Description = "Test0", Drops = drops,
                     HealthPoints = "10", Location = "Limgrave", Name = "Margit1",
@@ -49,7 +56,72 @@ namespace eldenRingUniversalApp
                     HealthPoints = "10", Location = "Limgrave", Name = "Margit3",
                     Image = margitImagePath
                 }
-            };
+            };*/
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            try
+            {
+                await GetBosses();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unhandled exception in OnNavigatedTo: {ex.Message}");
+            }
+        }
+
+        // I prompted ChatGpt "if I have an api that i'm using,
+        // how could I loop through all the objects in the api and add them to a list"
+        // To get some help with implementing the looping, then to get past an 
+        // error from deserializing, ChatGpt gave me the idea of creating a 
+        // wrapper class in Boss.cs
+        public async Task<ObservableCollection<Boss>> GetBosses()
+        {
+            List<Boss> apiBossList = new List<Boss>();
+
+            const string requestUrl = "https://eldenring.fanapis.com/api/bosses?limit=100";
+
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    var json = await httpClient.GetStringAsync(requestUrl);
+                    var bossWrapper = JsonConvert.DeserializeObject<BossWrapper>(json);
+                    
+                    if (bossWrapper == null || bossWrapper.Data == null)
+                    {
+                        throw new Exception("Invalid or empty response from the API.");
+                    }
+
+                    apiBossList = bossWrapper?.Data ?? new List<Boss>();
+
+                }
+                catch (HttpRequestException ex)
+                {
+                    var errorDialog = new ContentDialog()
+                    {
+                        Title = "HttpClient error",
+                        Content = ex.Message,
+                        CloseButtonText = "OK",
+                    };
+
+                    await errorDialog.ShowAsync();
+                }
+            }
+
+            foreach (var boss in apiBossList)
+            {
+                if (boss.Image == null)
+                {
+                    boss.Image = margitImagePath; // Will change to a different image later
+                }
+                bossList.Add(boss);
+            }
+
+            return bossList;
         }
 
         private void compendiumButton_Click(object sender, RoutedEventArgs e)

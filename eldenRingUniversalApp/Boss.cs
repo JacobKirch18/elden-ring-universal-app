@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace eldenRingUniversalApp
 {
+    public class BossWrapper
+    {
+        public List<Boss> Data { get; set; }
+    }
     public class Boss : INotifyPropertyChanged
     {
         private string id;
@@ -39,6 +43,18 @@ namespace eldenRingUniversalApp
             set
             {
                 image = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private string region;
+
+        public string Region
+        {
+            get => region;
+            set
+            {
+                region = value;
                 NotifyPropertyChanged();
             }
         }
