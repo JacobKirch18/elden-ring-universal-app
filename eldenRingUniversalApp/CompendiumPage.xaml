@@ -74,6 +74,7 @@
                             </ListView.ItemContainerStyle>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
+                                    <!-- crashes if you switch this to x:Bind even if it doesn't show error -->
                                     <TextBlock Text="{Binding}" />
                                 </DataTemplate>
                             </ListView.ItemTemplate>

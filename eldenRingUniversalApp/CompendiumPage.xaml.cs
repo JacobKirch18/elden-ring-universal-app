@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -68,6 +70,47 @@ namespace eldenRingUniversalApp
                     boss.Drops[0] = multipliedDrop;
                 }
             }
+
+            string radioButtonName = ApplicationData.Current.LocalSettings.Values["checkedRadioButton"] as string;
+            if (radioButtonName == "rb0")
+            {
+                rb0.IsChecked = true;
+            }
+            else if (radioButtonName == "rb1")
+            {
+                rb1.IsChecked = true;
+            }
+            else if (radioButtonName == "rb2")
+            {
+                rb2.IsChecked = true;
+            }
+            else if (radioButtonName == "rb3")
+            {
+                rb3.IsChecked = true;
+            }
+            else if (radioButtonName == "rb4")
+            {
+                rb4.IsChecked = true;
+            }
+            else if (radioButtonName == "rb5")
+            {
+                rb5.IsChecked = true;
+            }
+            else if (radioButtonName == "rb6")
+            {
+                rb6.IsChecked = true;
+            }
+            else if (radioButtonName == "rb7")
+            {
+                rb7.IsChecked = true;
+            }
+
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            ApplicationData.Current.LocalSettings.Values["checkedRadioButton"] = findCheckedRadioButton();
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
@@ -164,39 +207,79 @@ namespace eldenRingUniversalApp
         /// </summary>
         private int getNGExponent()
         {
-            if (rb0.IsChecked == true)
+            string radioButtonName = findCheckedRadioButton();
+
+            if (radioButtonName == "rb0")
             {
                 return 0;
             }
-            if (rb1.IsChecked == true)
+            else if (radioButtonName == "rb1")
             {
                 return 1;
             }
-            if (rb2.IsChecked == true)
+            else if (radioButtonName == "rb2")
             {
                 return 2;
             }
-            if (rb3.IsChecked == true)
+            else if (radioButtonName == "rb3")
             {
                 return 3;
             }
-            if (rb4.IsChecked == true)
+            else if (radioButtonName == "rb4")
             {
                 return 4;
             }
-            if (rb5.IsChecked == true)
+            else if (radioButtonName == "rb5")
             {
                 return 5;
             }
-            if (rb6.IsChecked == true)
+            else if (radioButtonName == "rb6")
             {
                 return 6;
             }
-            if (rb7.IsChecked == true)
+            else if (radioButtonName == "rb7")
             {
                 return 7;
             }
-            return 0;
+            else return 0;
         }
+
+        public string findCheckedRadioButton()
+        {
+            if (rb0.IsChecked == true)
+            {
+                return "rb0";
+            }
+            if (rb1.IsChecked == true)
+            {
+                return "rb1";
+            }
+            if (rb2.IsChecked == true)
+            {
+                return "rb2";
+            }
+            if (rb3.IsChecked == true)
+            {
+                return "rb3";
+            }
+            if (rb4.IsChecked == true)
+            {
+                return "rb4";
+            }
+            if (rb5.IsChecked == true)
+            {
+                return "rb5";
+            }
+            if (rb6.IsChecked == true)
+            {
+                return "rb6";
+            }
+            if (rb7.IsChecked == true)
+            {
+                return "rb7";
+            }
+            return "rb0";
+        }
+
     }
 }
