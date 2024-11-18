@@ -137,6 +137,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\elden ring.jpg" />
     <Content Include="Images\erSmallLogo.jpg" />
     <Content Include="Images\erSplashScreen.jpg" />
     <Content Include="Images\margit.jfif">

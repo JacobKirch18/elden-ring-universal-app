@@ -34,13 +34,13 @@ namespace eldenRingUniversalApp
         // All of these are tests and should be removed 
         private ObservableCollection<Boss> bossList;
         string[] drops = { "30,000 runes" };
-        string margitImagePath;
+        string noImageFound;
         public MainPage()
         {
             this.InitializeComponent();
 
             bossList = new ObservableCollection<Boss>();
-            margitImagePath = @"Images\margit.jfif";
+            noImageFound = @"Images\elden ring.jpg";
 
             /*bossList = new ObservableCollection<Boss>()
             {
@@ -116,7 +116,7 @@ namespace eldenRingUniversalApp
             {
                 if (boss.Image == null)
                 {
-                    boss.Image = margitImagePath; // Will change to a different image later
+                    boss.Image = noImageFound;
                 }
                 bossList.Add(boss);
             }
