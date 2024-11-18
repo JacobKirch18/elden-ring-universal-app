@@ -14,6 +14,7 @@ namespace eldenRingUniversalApp
     }
     public class Boss : INotifyPropertyChanged
     {
+
         private string id;
         public string Id
         {
@@ -107,6 +108,29 @@ namespace eldenRingUniversalApp
         private void NotifyPropertyChanged([CallerMemberName] string property = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+        // I shared some code with ChatGpt and prompted it with
+        // "for some reason, going to a different page and then
+        // coming back will not prevent me from adding the same
+        // boss into the list" and it gave me these methods to 
+        // use when calling defeatedBosses.Contains(defeatedBoss)
+        // on line 130 in Main Page
+
+        // Override Equals to compare based on unique properties
+        public override bool Equals(object obj)
+        {
+            if (obj is Boss otherBoss)
+            {
+                return Id == otherBoss.Id; // Compare based on Id
+            }
+            return false;
+        }
+
+        // Override GetHashCode to match Equals logic
+        public override int GetHashCode()
+        {
+            return Id?.GetHashCode() ?? 0;
         }
     }
 }
