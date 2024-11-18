@@ -11,7 +11,7 @@
 
     <RelativePanel>
         <CommandBar x:Name="commandBar" RelativePanel.AlignRightWithPanel="True">
-            <AppBarButton Icon="Home" Label="Compendium" Click="homeButton_Click" Width="85" />
+            <AppBarButton Icon="Home" Label="Home" Click="homeButton_Click" Width="85" />
             <AppBarButton Icon="Help" Label="About" Click="aboutGameButton_Click" Width="85" />
             <AppBarButton Icon="Find" Label="Search" Click="searchButton_Click" Width="85" />
         </CommandBar>
