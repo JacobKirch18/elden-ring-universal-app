@@ -215,7 +215,7 @@ namespace eldenRingUniversalApp
                     }
                 };
 
-                _ = dialog.ShowAsync(); // what does this do?
+                _ = dialog.ShowAsync();
             }
         }
 
