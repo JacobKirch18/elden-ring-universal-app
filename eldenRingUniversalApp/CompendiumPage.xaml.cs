@@ -22,7 +22,7 @@ namespace eldenRingUniversalApp
     public sealed partial class CompendiumPage : Page
     {
 
-        ObservableCollection<Boss> defeatedBosses;
+        ObservableCollection<BossViewModel> defeatedBosses;
 
         public CompendiumPage()
         {
@@ -48,15 +48,15 @@ namespace eldenRingUniversalApp
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter is List<Boss> bossList)
+            if (e.Parameter is ObservableCollection<BossViewModel> bossList)
             {
-                defeatedBosses = new ObservableCollection<Boss>(bossList);
+                defeatedBosses = new ObservableCollection<BossViewModel>(bossList);
             }
 
             // add radio button serialization
             
             int exp = getNGExponent();
-            foreach (Boss boss in defeatedBosses)
+            foreach (BossViewModel boss in defeatedBosses)
             { 
               // asked GitHub Copilot "How to turn a string such as "13.000 Runes" into just the number"
                 string drop = boss.Drops[0];
@@ -134,7 +134,7 @@ namespace eldenRingUniversalApp
 
             if (clickedButton != null)
             {
-                Boss defeatedBoss = clickedButton.DataContext as Boss;
+                BossViewModel defeatedBoss = clickedButton.DataContext as BossViewModel;
                 if (defeatedBoss != null)
                 {
                     defeatedBosses.Remove(defeatedBoss);
@@ -145,7 +145,7 @@ namespace eldenRingUniversalApp
         private void radioButton_Click(object sender, RoutedEventArgs e) 
         {
             int exp = getNGExponent();
-            foreach (Boss boss in defeatedBosses)
+            foreach (BossViewModel boss in defeatedBosses)
             {
                 // asked GitHub Copilot "How to turn a string such as "13.000 Runes" into just the number"
                 string drop = boss.Drops[0];

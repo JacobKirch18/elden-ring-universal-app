@@ -48,10 +48,10 @@
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Boss">
+                <DataTemplate x:DataType="local:BossViewModel">
                     <StackPanel>
                         <TextBlock Text="&#x0A;Name:" FontWeight="Bold"/>
-                        <TextBlock Text="{x:Bind Name}" FontWeight="Bold" />
+                        <TextBlock Text="{x:Bind Name, Mode=TwoWay}" FontWeight="Bold" />
                         <Image Source="{x:Bind Image}" Width="400" Margin="0,10,0,0" HorizontalAlignment="Left"/>
                         <TextBlock Text="&#x0A;Description: "/>
                         <TextBlock Text="{x:Bind Description}" />

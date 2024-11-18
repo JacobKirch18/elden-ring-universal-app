@@ -26,17 +26,17 @@ namespace eldenRingUniversalApp
     public sealed partial class MainPage : Page
     {
 
-        private static List<Boss> defeatedBosses = new List<Boss>();
+        private static ObservableCollection<BossViewModel> defeatedBosses = new ObservableCollection<BossViewModel>();
 
         // All of these are tests and should be removed 
-        private ObservableCollection<Boss> bossList;
+        private ObservableCollection<BossViewModel> bossList;
         string[] drops = { "30,000 runes" };
         string noImageFound;
         public MainPage()
         {
             this.InitializeComponent();
 
-            bossList = new ObservableCollection<Boss>();
+            bossList = new ObservableCollection<BossViewModel>();
             noImageFound = @"Images\elden ring.jpg";
 
         }
@@ -60,9 +60,9 @@ namespace eldenRingUniversalApp
         // To get some help with implementing the looping, then to get past an 
         // error from deserializing, ChatGpt gave me the idea of creating a 
         // wrapper class in Boss.cs
-        public async Task<ObservableCollection<Boss>> GetBosses()
+        public async Task<ObservableCollection<BossViewModel>> GetBosses()
         {
-            List<Boss> apiBossList = new List<Boss>();
+            List<BossViewModel> apiBossList = new List<BossViewModel>();
 
             const string requestUrl = "https://eldenring.fanapis.com/api/bosses?limit=100";
 
@@ -78,7 +78,7 @@ namespace eldenRingUniversalApp
                         throw new Exception("Invalid or empty response from the API.");
                     }
 
-                    apiBossList = bossWrapper?.Data ?? new List<Boss>();
+                    apiBossList = bossWrapper?.Data ?? new List<BossViewModel>();
 
                 }
                 catch (HttpRequestException ex)
@@ -123,7 +123,7 @@ namespace eldenRingUniversalApp
 
             if (clickedButton != null)
             {
-                Boss defeatedBoss = clickedButton.DataContext as Boss;
+                BossViewModel defeatedBoss = clickedButton.DataContext as BossViewModel;
                 if (defeatedBoss != null && !defeatedBosses.Contains(defeatedBoss))
                 {
 
