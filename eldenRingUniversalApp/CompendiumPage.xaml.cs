@@ -19,9 +19,6 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace eldenRingUniversalApp
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CompendiumPage : Page
     {
 
@@ -53,9 +50,23 @@ namespace eldenRingUniversalApp
 
             if (e.Parameter is List<Boss> bossList)
             {
-                // Access the bossList data and perform any necessary operations
-                // For example, you can bind it to a ListView or display it in the UI
-               defeatedBosses = new ObservableCollection<Boss>(bossList);
+                defeatedBosses = new ObservableCollection<Boss>(bossList);
+            }
+
+            // add radio button serialization
+            
+            int exp = getNGExponent();
+            foreach (Boss boss in defeatedBosses)
+            { 
+              // asked GitHub Copilot "How to turn a string such as "13.000 Runes" into just the number"
+                string drop = boss.Drops[0];
+                string[] parts = drop.Split(' ');
+                if (parts.Length >= 2 && decimal.TryParse(parts[0].Replace(".", ","), out decimal number))
+                {
+                    decimal multipliedNumber = number * (decimal)Math.Pow(2, exp);
+                    string multipliedDrop = multipliedNumber.ToString().Replace(",", ".") + " " + parts[1];
+                    boss.Drops[0] = multipliedDrop;
+                }
             }
         }
 
@@ -129,6 +140,63 @@ namespace eldenRingUniversalApp
                     defeatedBosses.Remove(defeatedBoss);
                 }
             }
+        }
+
+        private void radioButton_Click(object sender, RoutedEventArgs e) 
+        {
+            int exp = getNGExponent();
+            foreach (Boss boss in defeatedBosses)
+            {
+                // asked GitHub Copilot "How to turn a string such as "13.000 Runes" into just the number"
+                string drop = boss.Drops[0];
+                string[] parts = drop.Split(' ');
+                if (parts.Length >= 2 && decimal.TryParse(parts[0].Replace(".", ","), out decimal number))
+                {
+                    decimal multipliedNumber = number * (decimal)Math.Pow(2, exp);
+                    string multipliedDrop = multipliedNumber.ToString().Replace(",", ".") + " " + parts[1];
+                    boss.Drops[0] = multipliedDrop;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the exponent used in rune calculation for different New Game+ Levels 
+        /// </summary>
+        private int getNGExponent()
+        {
+            if (rb0.IsChecked == true)
+            {
+                return 0;
+            }
+            if (rb1.IsChecked == true)
+            {
+                return 1;
+            }
+            if (rb2.IsChecked == true)
+            {
+                return 2;
+            }
+            if (rb3.IsChecked == true)
+            {
+                return 3;
+            }
+            if (rb4.IsChecked == true)
+            {
+                return 4;
+            }
+            if (rb5.IsChecked == true)
+            {
+                return 5;
+            }
+            if (rb6.IsChecked == true)
+            {
+                return 6;
+            }
+            if (rb7.IsChecked == true)
+            {
+                return 7;
+            }
+            return 0;
         }
     }
 }
