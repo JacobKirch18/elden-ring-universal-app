@@ -23,13 +23,13 @@
         <TextBlock x:Name="levelText" Text="New Game+ Level" FontSize="20" Padding ="20" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="compendiumText"/>
         <StackPanel x:Name="radioButtonsStackPanel" Orientation="Horizontal" Margin="35,0,0,0" Padding="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="levelText">
             <RadioButton x:Name="rb0" Content="NG+ 0" IsChecked="True"/>
-            <RadioButton x:Name="rb1" Content="NG+ 1" Click="radioButton_Click" />
-            <RadioButton x:Name="rb2" Content="NG+ 2" Click="radioButton_Click" />
-            <RadioButton x:Name="rb3" Content="NG+ 3" Click="radioButton_Click" />
-            <RadioButton x:Name="rb4" Content="NG+ 4" Click="radioButton_Click" />
-            <RadioButton x:Name="rb5" Content="NG+ 5" Click="radioButton_Click" />
-            <RadioButton x:Name="rb6" Content="NG+ 6" Click="radioButton_Click" />
-            <RadioButton x:Name="rb7" Content="NG+ 7" Click="radioButton_Click" />
+            <RadioButton x:Name="rb1" Content="NG+ 1" />
+            <RadioButton x:Name="rb2" Content="NG+ 2" />
+            <RadioButton x:Name="rb3" Content="NG+ 3" />
+            <RadioButton x:Name="rb4" Content="NG+ 4" />
+            <RadioButton x:Name="rb5" Content="NG+ 5" />
+            <RadioButton x:Name="rb6" Content="NG+ 6" />
+            <RadioButton x:Name="rb7" Content="NG+ 7" />
         </StackPanel>
         <Line x:Name="divLine" X1="0" Y1="0" X2="{Binding ElementName=radioButtonsStackPanel, Path=ActualWidth}" Y2="1" 
               Stroke="White" StrokeThickness="2" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="radioButtonsStackPanel" />
@@ -82,7 +82,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                         <TextBlock Text="&#x0A;Health Points: "/>
-                        <TextBlock Text="{x:Bind HealthPoints}" />
+                        <TextBlock Text="{x:Bind HealthPoints, Mode=TwoWay}" />
                         <StackPanel x:Name="buttonsStackPanel" Orientation="Horizontal" Margin="0,10,0,0">
                             <Button Content="Remove Boss" Click="removeBossButton_Click" Margin="0,10,5,0" Padding="5"/>
                             <Button Content="Edit Boss Nickname" Click="editNicknameButton_Click" Margin="5,10,0,0" Padding="5"/>

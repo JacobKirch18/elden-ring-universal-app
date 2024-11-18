@@ -56,22 +56,6 @@ namespace eldenRingUniversalApp
                 defeatedBosses = new ObservableCollection<BossViewModel>(bossList);
             }
 
-            // add radio button serialization
-            
-            int exp = getNGExponent();
-            foreach (BossViewModel boss in defeatedBosses)
-            { 
-              // asked GitHub Copilot "How to turn a string such as "13.000 Runes" into just the number"
-                string drop = boss.Drops[0];
-                string[] parts = drop.Split(' ');
-                if (parts.Length >= 2 && decimal.TryParse(parts[0].Replace(".", ","), out decimal number))
-                {
-                    decimal multipliedNumber = number * (decimal)Math.Pow(2, exp);
-                    string multipliedDrop = multipliedNumber.ToString().Replace(",", ".") + " " + parts[1];
-                    boss.Drops[0] = multipliedDrop;
-                }
-            }
-
             string radioButtonName = ApplicationData.Current.LocalSettings.Values["checkedRadioButton"] as string;
             if (radioButtonName == "rb0")
             {
@@ -106,6 +90,8 @@ namespace eldenRingUniversalApp
                 rb7.IsChecked = true;
             }
 
+            //updateHealthValues();
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -116,7 +102,7 @@ namespace eldenRingUniversalApp
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage), defeatedBosses);
         }
 
         private void aboutGameButton_Click(object sender, RoutedEventArgs e)
@@ -219,64 +205,69 @@ namespace eldenRingUniversalApp
             }
         }
 
-        private void radioButton_Click(object sender, RoutedEventArgs e) 
-        {
-            int exp = getNGExponent();
-            foreach (BossViewModel boss in defeatedBosses)
-            {
-                // asked GitHub Copilot "How to turn a string such as "13.000 Runes" into just the number"
-                string drop = boss.Drops[0];
-                string[] parts = drop.Split(' ');
-                if (parts.Length >= 2 && decimal.TryParse(parts[0].Replace(".", ","), out decimal number))
-                {
-                    decimal multipliedNumber = number * (decimal)Math.Pow(2, exp);
-                    string multipliedDrop = multipliedNumber.ToString().Replace(",", ".") + " " + parts[1];
-                    boss.Drops[0] = multipliedDrop;
-                }
-            }
-        }
+        //private void radioButton_Click(object sender, RoutedEventArgs e) 
+        //{
+        //    updateHealthValues();
+        //}
+
+        //private void updateHealthValues()
+        //{
+        //    int mul = getMultiplier();
+        //    foreach (BossViewModel boss in defeatedBosses)
+        //    {
+        //        if (boss.HealthPoints != "???")
+        //        {
+        //            // from https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse?view=net-9.0
+        //            if (int.TryParse(boss.HealthPoints, out int health))
+        //            {
+        //                health = health * mul;
+        //                boss.HealthPoints = health.ToString();
+        //            }
+        //        }
+        //    }
+        //}
 
         /// <summary>
-        /// Returns the exponent used in rune calculation for different New Game+ Levels 
+        /// Returns the number used in health calculations for different New Game+ Levels 
         /// </summary>
-        private int getNGExponent()
-        {
-            string radioButtonName = findCheckedRadioButton();
+        //private int getMultiplier()
+        //{
+        //    string radioButtonName = findCheckedRadioButton();
 
-            if (radioButtonName == "rb0")
-            {
-                return 0;
-            }
-            else if (radioButtonName == "rb1")
-            {
-                return 1;
-            }
-            else if (radioButtonName == "rb2")
-            {
-                return 2;
-            }
-            else if (radioButtonName == "rb3")
-            {
-                return 3;
-            }
-            else if (radioButtonName == "rb4")
-            {
-                return 4;
-            }
-            else if (radioButtonName == "rb5")
-            {
-                return 5;
-            }
-            else if (radioButtonName == "rb6")
-            {
-                return 6;
-            }
-            else if (radioButtonName == "rb7")
-            {
-                return 7;
-            }
-            else return 0;
-        }
+        //    if (radioButtonName == "rb0")
+        //    {
+        //        return 0;
+        //    }
+        //    else if (radioButtonName == "rb1")
+        //    {
+        //        return 1;
+        //    }
+        //    else if (radioButtonName == "rb2")
+        //    {
+        //        return 2;
+        //    }
+        //    else if (radioButtonName == "rb3")
+        //    {
+        //        return 3;
+        //    }
+        //    else if (radioButtonName == "rb4")
+        //    {
+        //        return 4;
+        //    }
+        //    else if (radioButtonName == "rb5")
+        //    {
+        //        return 5;
+        //    }
+        //    else if (radioButtonName == "rb6")
+        //    {
+        //        return 6;
+        //    }
+        //    else if (radioButtonName == "rb7")
+        //    {
+        //        return 7;
+        //    }
+        //    else return 0;
+        //}
 
         public string findCheckedRadioButton()
         {

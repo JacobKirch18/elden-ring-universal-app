@@ -24,9 +24,19 @@ namespace eldenRingUniversalApp
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void okButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
+        }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void compendiumButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CompendiumPage));
         }
     }
 }

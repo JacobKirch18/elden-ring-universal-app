@@ -59,6 +59,11 @@ namespace eldenRingUniversalApp
                     ApplicationData.Current.LocalSettings.Values["defeated"] as string);
             }
 
+            if (e.Parameter is ObservableCollection<BossViewModel> bossList)
+            {
+                defeatedBosses = new ObservableCollection<BossViewModel>(bossList);
+            }
+
             try
             {   
                 await GetBosses();

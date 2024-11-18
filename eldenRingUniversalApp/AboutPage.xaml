@@ -10,6 +10,10 @@
     RequestedTheme="Dark">
 
     <Grid>
+        <CommandBar x:Name="commandBar" HorizontalAlignment="Right">
+            <AppBarButton Icon="Home" Label="Compendium" Click="homeButton_Click" Width="85" />
+            <AppBarButton Icon="Library" Label="About" Click="compendiumButton_Click" Width="85" />
+        </CommandBar>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Elden Ring Boss Book" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" />
             <Image Source="Images/erSmallLogo.jpg" Width="200" HorizontalAlignment="Center"/>
@@ -17,7 +21,9 @@
             <TextBlock Text="This is a companion app for the game Elden Ring" FontSize="18" HorizontalAlignment="Center"/>
             <TextBlock Text="It allows you to keep track of all the bosses you've killed," FontSize="18" HorizontalAlignment="Center"/>
             <TextBlock Text="and all the information you learned about that boss." FontSize="18" HorizontalAlignment="Center"/>
-            <Button Content="OK" HorizontalAlignment="Center" Click="Button_Click" Margin="10"/>
+            <TextBlock Text="New Game+ value can be changed to record what" FontSize="18" HorizontalAlignment="Center"/>
+            <TextBlock Text="playthrough you are on." FontSize="18" HorizontalAlignment="Center"/>
+            <Button Content="OK" HorizontalAlignment="Center" Click="okButton_Click" Margin="10"/>
         </StackPanel>
     </Grid>
 </Page>
