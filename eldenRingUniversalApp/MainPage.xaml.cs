@@ -59,7 +59,7 @@ namespace eldenRingUniversalApp
                     ApplicationData.Current.LocalSettings.Values["defeated"] as string);
             }
 
-                try
+            try
             {   
                 await GetBosses();
             }
