@@ -29,7 +29,7 @@ namespace eldenRingUniversalApp
     public sealed partial class MainPage : Page
     {
 
-        private List<Boss> defeatedBosses = new List<Boss>();
+        private static List<Boss> defeatedBosses = new List<Boss>();
 
         // All of these are tests and should be removed 
         private ObservableCollection<Boss> bossList;
@@ -42,21 +42,6 @@ namespace eldenRingUniversalApp
             bossList = new ObservableCollection<Boss>();
             noImageFound = @"Images\elden ring.jpg";
 
-            /*bossList = new ObservableCollection<Boss>()
-            {
-                new Boss { Id = "0", Description = "Test0", Drops = drops,
-                    HealthPoints = "10", Location = "Limgrave", Name = "Margit1",
-                    Image = margitImagePath
-                },
-                new Boss { Id = "1", Description = "Test1", Drops = drops,
-                    HealthPoints = "10", Location = "Limgrave", Name = "Margit The Fell: Omen",
-                    Image = margitImagePath
-                },
-                new Boss { Id = "3", Description = "Test3", Drops = drops,
-                    HealthPoints = "10", Location = "Limgrave", Name = "Margit3",
-                    Image = margitImagePath
-                }
-            };*/
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
