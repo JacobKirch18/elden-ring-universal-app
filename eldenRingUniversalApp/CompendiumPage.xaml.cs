@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.NetworkOperators;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -182,6 +183,39 @@ namespace eldenRingUniversalApp
                 {
                     defeatedBosses.Remove(defeatedBoss);
                 }
+            }
+        }
+
+        private void editNicknameButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            if (clickedButton != null)
+            {
+                // asked GitHub Copilot "I want a dialog popup to enter a boss nickname"
+                var dialog = new ContentDialog
+                {
+                    Title = "Edit Nickname",
+                    Content = new TextBox(),
+                    PrimaryButtonText = "Save",
+                    CloseButtonText = "Cancel"
+                };
+
+                dialog.PrimaryButtonClick += (s, args) =>
+                {
+                    var textBox = dialog.Content as TextBox;
+                    if (textBox != null)
+                    {
+                        string newNickname = textBox.Text;
+                        BossViewModel boss = clickedButton.DataContext as BossViewModel;
+                        if (boss != null)
+                        {
+                            boss.Nickname = newNickname;
+                        }
+                    }
+                };
+
+                _ = dialog.ShowAsync(); // what does this do?
             }
         }
 

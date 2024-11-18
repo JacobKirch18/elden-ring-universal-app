@@ -39,6 +39,16 @@ namespace eldenRingUniversalApp
             }
         }
 
+        public string Nickname
+        {
+            get { return boss.Nickname; }
+            set
+            {
+                boss.Nickname = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public string Image 
         {
             get { return boss.Image; }

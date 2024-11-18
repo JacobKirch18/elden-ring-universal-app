@@ -50,8 +50,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:BossViewModel">
                     <StackPanel>
-                        <TextBlock Text="&#x0A;Name:" FontWeight="Bold"/>
-                        <TextBlock Text="{x:Bind Name, Mode=TwoWay}" FontWeight="Bold" />
+                        <TextBlock Text="&#x0A;Name:" FontWeight="Bold" FontSize="20" />
+                        <TextBlock Text="{x:Bind Name}" FontWeight="Bold" FontSize="20" />
+                        <TextBlock Text="&#x0A;Nickname:" />
+                        <TextBlock Text="{x:Bind Nickname, Mode=TwoWay}" />
                         <Image Source="{x:Bind Image}" Width="400" Margin="0,10,0,0" HorizontalAlignment="Left"/>
                         <TextBlock Text="&#x0A;Description: "/>
                         <TextBlock Text="{x:Bind Description}" />
@@ -81,7 +83,10 @@
                         </ListView>
                         <TextBlock Text="&#x0A;Health Points: "/>
                         <TextBlock Text="{x:Bind HealthPoints}" />
-                        <Button Content="Remove Boss" Click="removeBossButton_Click" Margin="0,10,0,0"/>
+                        <StackPanel x:Name="buttonsStackPanel" Orientation="Horizontal" Margin="0,10,0,0">
+                            <Button Content="Remove Boss" Click="removeBossButton_Click" Margin="0,10,5,0" Padding="5"/>
+                            <Button Content="Edit Boss Nickname" Click="editNicknameButton_Click" Margin="5,10,0,0" Padding="5"/>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
