@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Diagnostics;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -41,12 +42,25 @@ namespace eldenRingUniversalApp
 
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            ApplicationData.Current.LocalSettings.Values["defeated"] = JsonConvert.SerializeObject(defeatedBosses);
+        }
+
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            try
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("defeated")) // To make sure it exists
             {
+                defeatedBosses = JsonConvert.DeserializeObject<ObservableCollection<BossViewModel>>(
+                    ApplicationData.Current.LocalSettings.Values["defeated"] as string);
+            }
+
+                try
+            {   
                 await GetBosses();
             }
             catch (Exception ex)

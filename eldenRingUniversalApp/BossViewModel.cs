@@ -104,5 +104,26 @@ namespace eldenRingUniversalApp
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
+        // Gave ChatGpt some code and asked it "for some reason, going to a
+        // different page and then coming back will not prevent me from
+        // adding the same boss into the list" and it gave me these two
+        // methods to solve my issue
+
+        // Override Equals to compare based on unique properties
+        public override bool Equals(object obj)
+        {
+            if (obj is BossViewModel otherBoss)
+            {
+                return Id == otherBoss.Id; // Compare based on Id
+            }
+            return false;
+        }
+
+        // Override GetHashCode to match Equals logic
+        public override int GetHashCode()
+        {
+            return Id?.GetHashCode() ?? 0;
+        }
+
     }
 }

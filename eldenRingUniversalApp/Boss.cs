@@ -24,20 +24,6 @@ namespace eldenRingUniversalApp
         public string[] Drops { get; set; }
         public string HealthPoints { get; set; }
 
-        // Override Equals to compare based on unique properties
-        public override bool Equals(object obj)
-        {
-            if (obj is Boss otherBoss)
-            {
-                return Id == otherBoss.Id; // Compare based on Id
-            }
-            return false;
-        }
-
-        // Override GetHashCode to match Equals logic
-        public override int GetHashCode()
-        {
-            return Id?.GetHashCode() ?? 0;
-        }
+        
     }
 }
