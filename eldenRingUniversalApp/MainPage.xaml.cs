@@ -59,9 +59,9 @@ namespace eldenRingUniversalApp
                     ApplicationData.Current.LocalSettings.Values["defeated"] as string);
             }
 
-            if (e.Parameter is string bossList && bossList != "")
+            if (e.Parameter is string defeatedBossList && defeatedBossList != "")
             {
-                var bosses = JsonConvert.DeserializeObject<ObservableCollection<BossViewModel>>(bossList);
+                var bosses = JsonConvert.DeserializeObject<ObservableCollection<BossViewModel>>(defeatedBossList);
                 defeatedBosses = new ObservableCollection<BossViewModel>(bosses);
             }
 
@@ -180,6 +180,39 @@ namespace eldenRingUniversalApp
                     });
                     // Remove boss from Main or show that he was defeated in Main
                 }
+                else if (defeatedBosses.Contains(defeatedBoss))
+                {
+                    defeatedText.Text = defeatedBoss.Name + " already in compendium";
+
+                    // I asked ChatGPT "how could I flash a little notification pop up in my page?" to learn about Popup
+                    // I also asked ChatGPT "I'm trying to have it centered, how could I do that" and got the following code
+
+                    // Get the size of the current window
+                    var windowBounds = Window.Current.Bounds;
+
+                    // Get the Popup's content size
+                    NotificationPopup.Child.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                    var popupSize = NotificationPopup.Child.DesiredSize;
+
+                    // Calculate the center position
+                    double horizontalOffset = (windowBounds.Width - popupSize.Width) / 2;
+                    double verticalOffset = (windowBounds.Height - popupSize.Height) / 2;
+
+                    // Set the Popup's offset
+                    NotificationPopup.HorizontalOffset = horizontalOffset;
+                    NotificationPopup.VerticalOffset = verticalOffset;
+                    NotificationPopup.IsOpen = true;
+
+                    // Automatically close the popup after 3 seconds
+                    Task task = Task.Delay(3000).ContinueWith(t =>
+                    {
+                        _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                        {
+                            NotificationPopup.IsOpen = false;
+                        });
+                    });
+                }
+
             }
         }
 
