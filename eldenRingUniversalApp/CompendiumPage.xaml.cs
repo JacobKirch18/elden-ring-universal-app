@@ -51,9 +51,10 @@ namespace eldenRingUniversalApp
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter is ObservableCollection<BossViewModel> bossList)
+            if (e.Parameter is string bossList)
             {
-                defeatedBosses = new ObservableCollection<BossViewModel>(bossList);
+                var bosses = JsonConvert.DeserializeObject<ObservableCollection<BossViewModel>>(bossList);
+                defeatedBosses = new ObservableCollection<BossViewModel>(bosses);
             }
 
             string radioButtonName = "rb0";
@@ -108,7 +109,8 @@ namespace eldenRingUniversalApp
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage), defeatedBosses);
+            string defeated = JsonConvert.SerializeObject(defeatedBosses);
+            this.Frame.Navigate(typeof(MainPage), defeated);
         }
 
         private void aboutGameButton_Click(object sender, RoutedEventArgs e)

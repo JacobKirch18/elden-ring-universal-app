@@ -59,9 +59,10 @@ namespace eldenRingUniversalApp
                     ApplicationData.Current.LocalSettings.Values["defeated"] as string);
             }
 
-            if (e.Parameter is ObservableCollection<BossViewModel> bossList)
+            if (e.Parameter is string bossList && bossList != "")
             {
-                defeatedBosses = new ObservableCollection<BossViewModel>(bossList);
+                var bosses = JsonConvert.DeserializeObject<ObservableCollection<BossViewModel>>(bossList);
+                defeatedBosses = new ObservableCollection<BossViewModel>(bosses);
             }
 
             try
@@ -127,7 +128,8 @@ namespace eldenRingUniversalApp
 
         private void compendiumButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(CompendiumPage), defeatedBosses);
+            string defeated = JsonConvert.SerializeObject(defeatedBosses);
+            this.Frame.Navigate(typeof(CompendiumPage), defeated);
         }
 
         private void aboutGameButton_Click(object sender, RoutedEventArgs e)
