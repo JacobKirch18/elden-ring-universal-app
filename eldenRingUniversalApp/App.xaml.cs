@@ -56,6 +56,12 @@ namespace eldenRingUniversalApp
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
+                    var navigationState = ApplicationData.Current.LocalSettings.Values["NavigationState"] as string;
+                    if (navigationState != null)
+                    {
+                        rootFrame.SetNavigationState(navigationState);
+                    }
+
                 }
 
                 // Place the frame in the current Window
