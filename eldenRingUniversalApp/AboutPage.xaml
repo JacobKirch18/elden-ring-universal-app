@@ -12,7 +12,6 @@
     <Grid>
         <CommandBar x:Name="commandBar" HorizontalAlignment="Right">
             <AppBarButton Icon="Home" Label="Home" Click="homeButton_Click" Width="85" />
-            <AppBarButton Icon="Library" Label="Compendium" Click="compendiumButton_Click" Width="85" />
         </CommandBar>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Elden Ring Boss Book" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" />
