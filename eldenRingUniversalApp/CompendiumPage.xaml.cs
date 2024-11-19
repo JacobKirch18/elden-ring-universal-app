@@ -56,7 +56,13 @@ namespace eldenRingUniversalApp
                 defeatedBosses = new ObservableCollection<BossViewModel>(bossList);
             }
 
-            string radioButtonName = ApplicationData.Current.LocalSettings.Values["checkedRadioButton"] as string;
+            string radioButtonName = "rb0";
+
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("checkedRadioButton"))
+            {
+                radioButtonName = ApplicationData.Current.LocalSettings.Values["checkedRadioButton"] as string;
+            }
+
             if (radioButtonName == "rb0")
             {
                 rb0.IsChecked = true;
@@ -204,6 +210,8 @@ namespace eldenRingUniversalApp
                 _ = dialog.ShowAsync();
             }
         }
+
+        // these would not work because of the way the health string comes in, some would not parse correctly
 
         //private void radioButton_Click(object sender, RoutedEventArgs e) 
         //{
