@@ -105,6 +105,7 @@ namespace eldenRingUniversalApp
         {
             base.OnNavigatedFrom(e);
             ApplicationData.Current.LocalSettings.Values["checkedRadioButton"] = findCheckedRadioButton();
+            ApplicationData.Current.LocalSettings.Values["defeated"] = JsonConvert.SerializeObject(defeatedBosses);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
