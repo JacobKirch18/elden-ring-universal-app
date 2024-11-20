@@ -212,6 +212,42 @@ namespace eldenRingUniversalApp
                 _ = dialog.ShowAsync();
             }
         }
+        public string findCheckedRadioButton()
+        {
+            if (rb0.IsChecked == true)
+            {
+                return "rb0";
+            }
+            if (rb1.IsChecked == true)
+            {
+                return "rb1";
+            }
+            if (rb2.IsChecked == true)
+            {
+                return "rb2";
+            }
+            if (rb3.IsChecked == true)
+            {
+                return "rb3";
+            }
+            if (rb4.IsChecked == true)
+            {
+                return "rb4";
+            }
+            if (rb5.IsChecked == true)
+            {
+                return "rb5";
+            }
+            if (rb6.IsChecked == true)
+            {
+                return "rb6";
+            }
+            if (rb7.IsChecked == true)
+            {
+                return "rb7";
+            }
+            return "rb0";
+        }
 
         // these would not work because of the way the health string comes in, some would not parse correctly
 
@@ -279,42 +315,6 @@ namespace eldenRingUniversalApp
         //    else return 0;
         //}
 
-        public string findCheckedRadioButton()
-        {
-            if (rb0.IsChecked == true)
-            {
-                return "rb0";
-            }
-            if (rb1.IsChecked == true)
-            {
-                return "rb1";
-            }
-            if (rb2.IsChecked == true)
-            {
-                return "rb2";
-            }
-            if (rb3.IsChecked == true)
-            {
-                return "rb3";
-            }
-            if (rb4.IsChecked == true)
-            {
-                return "rb4";
-            }
-            if (rb5.IsChecked == true)
-            {
-                return "rb5";
-            }
-            if (rb6.IsChecked == true)
-            {
-                return "rb6";
-            }
-            if (rb7.IsChecked == true)
-            {
-                return "rb7";
-            }
-            return "rb0";
-        }
 
     }
 }
