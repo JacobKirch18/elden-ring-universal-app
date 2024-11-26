@@ -20,6 +20,7 @@
                    GotFocus="searchTextBox_GotFocus" LostFocus="searchTextBox_LostFocus" 
                    TextChanged="searchTextBox_TextChanged" />
         <TextBlock Text="Boss List" FontSize="50" Padding="50" HorizontalAlignment="Center"/>
+        <Button Content="Mark all as defeated" HorizontalAlignment="Left" Margin="50,20,50,20" Click="allDefeatedButton_Click"/>
         <StackPanel>
             <ListView x:Name="bossListView" Height="750"
             ItemsSource="{x:Bind bossList}" Margin="10,0,10,0" HorizontalAlignment="Stretch">

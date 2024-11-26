@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -51,7 +52,6 @@ namespace eldenRingUniversalApp
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -105,7 +105,11 @@ namespace eldenRingUniversalApp
             //TODO: Save application state and stop any background activity
 
             Frame frame = Window.Current.Content as Frame;
-            ApplicationData.Current.LocalSettings.Values["NavigationState"] = frame.GetNavigationState();
+            try
+            {
+                ApplicationData.Current.LocalSettings.Values["NavigationState"] = frame.GetNavigationState();
+            }
+            catch (Exception ex) { deferral.Complete(); return; }
 
             deferral.Complete();
         }
