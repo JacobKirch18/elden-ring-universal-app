@@ -22,6 +22,7 @@
         <TextBlock Text="Boss List" FontSize="50" Padding="50" HorizontalAlignment="Center"/>
         <Button Content="Mark all as defeated" HorizontalAlignment="Left" Margin="50,20,50,20" Click="allDefeatedButton_Click"/>
         <StackPanel>
+            <ProgressRing x:Name="LoadingIndicator" IsActive="False" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" />
             <ListView x:Name="bossListView" Height="750"
             ItemsSource="{x:Bind bossList}" Margin="10,0,10,0" HorizontalAlignment="Stretch">
                 <!-- ChatGPt helped me align defeatButton to the right, used many trial and error prompts until it gave me this code -->

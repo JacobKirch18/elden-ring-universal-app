@@ -106,6 +106,9 @@ namespace eldenRingUniversalApp
 
             const string requestUrl = "https://eldenring.fanapis.com/api/bosses?limit=100";
 
+            LoadingIndicator.IsActive = true;
+            await Task.Delay(1000);
+
             using (var httpClient = new HttpClient())
             {
                 try
@@ -131,6 +134,10 @@ namespace eldenRingUniversalApp
                     };
 
                     await errorDialog.ShowAsync();
+                }
+                finally
+                {
+                    LoadingIndicator.IsActive = false;
                 }
             }
 
