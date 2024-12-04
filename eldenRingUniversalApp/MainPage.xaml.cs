@@ -45,7 +45,7 @@ namespace eldenRingUniversalApp
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            await Task.Delay(100); // Wait for OnNavigatedFrom in Copmendium
+            await Task.Delay(100); // Wait for OnNavigatedFrom in Compendium
 
             if (e.Parameter is string defeatedBossList && defeatedBossList != "")
             {
